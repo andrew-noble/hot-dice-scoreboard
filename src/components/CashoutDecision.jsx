@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "@mui/material/Button";
 
 export default function CashoutDecision(props) {
-  const { handleCashout, handleContinue } = props;
-
   return (
     <>
-      <Button variant="contained" onClick={handleCashout}>
+      <Button
+        variant="contained"
+        onClick={() => props.doGameLogic({ type: "CASHOUT" })}
+      >
         Cash ("Bank") this Pot 🏦
       </Button>
-      <Button variant="contained" onClick={handleContinue}>
+      <Button
+        variant="contained"
+        onClick={() => props.doGameLogic({ type: "CONTINUE" })}
+      >
         Push Your Luck 😈
       </Button>
     </>

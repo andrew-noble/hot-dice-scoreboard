@@ -16,7 +16,9 @@ export default function RollInput(props) {
 
   return (
     <>
-      <form onSubmit={() => props.handleRollSubmit(rollInput)}>
+      <form
+        onSubmit={() => props.doGameLogic({ type: "ROLL", roll: rollInput })}
+      >
         <TextField
           id="outlined-basic"
           label="Roll"
@@ -28,9 +30,9 @@ export default function RollInput(props) {
       </form>
       <Button
         variant="contained"
-        onClick={() => props.handleRollSubmit(rollInput)}
+        onClick={() => props.doGameLogic({ type: "ROLL", roll: rollInput })}
       >
-        Submit
+        Submit Roll
       </Button>
     </>
   );

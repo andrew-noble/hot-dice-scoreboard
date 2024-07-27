@@ -4,22 +4,26 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
 export default function CreatePlayerArea(props) {
-  const { handleAddPlayer } = props;
   const [nameEntry, setNameEntry] = useState("");
 
   function handleEntry(event) {
     setNameEntry(event.target.value);
   }
 
-  function handleSubmit(event) {
+  function handleAddPlayer(event) {
     event.preventDefault();
-    handleAddPlayer(nameEntry);
+    props.handleAddPlayer(nameEntry);
     setNameEntry("");
+  }
+
+  function handleStart(event) {
+    event.preventDefault();
+    props.handleGameStart();
   }
 
   return (
     <Box>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleAddPlayer}>
         <TextField
           id="outlined-basic"
           label="Create Player"
@@ -28,8 +32,11 @@ export default function CreatePlayerArea(props) {
           value={nameEntry}
         />
       </form>
-      <Button variant="contained" onClick={handleSubmit}>
+      <Button variant="contained" onClick={handleAddPlayer}>
         Add
+      </Button>
+      <Button variant="contained" onClick={handleStart}>
+        Start Game
       </Button>
     </Box>
   );
