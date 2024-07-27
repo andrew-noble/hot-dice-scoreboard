@@ -19,13 +19,12 @@ export default function ScoreBoard() {
 
   function handleAddPlayer(name) {
     setPlayerList((prevList) => {
-      const newPlayer = { id: playerList.length, name: name, score: 0 };
-      return [...prevList, newPlayer];
+      return [...prevList, name];
     });
   }
 
   function handleGameStart() {
-    doGameLogic({ type: "INIT-PLAYERS", players: playerList });
+    doGameLogic({ type: "INIT-PLAYERS", playerList: playerList });
     setIsStarted(true);
   }
 
@@ -44,40 +43,51 @@ export default function ScoreBoard() {
   return (
     <>
       {isStarted ? (
-        <Box>
+        <>
           <Box>
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
-                {promptUser(state.prompt)}
+            <Box>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  {promptUser(state.prompt)}
+                </Grid>
+                <Grid item xs={6}>
+                  <PotCounter pot={state.pot}></PotCounter>
+                </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <PotCounter pot={state.pot}></PotCounter>
-              </Grid>
-            </Grid>
+            </Box>
           </Box>
-        </Box>
+          <Box>
+            <Stack spacing={2}>
+              {state.players.map((player) => {
+                return (
+                  <Player
+                    name={player.name}
+                    score={player.score}
+                    key={player.id}
+                    myTurn={state.whosTurn === player.id ? true : false}
+                  ></Player>
+                );
+              })}
+            </Stack>
+          </Box>
+        </>
       ) : (
-        <Box>
-          <CreatePlayerArea
-            handleAddPlayer={handleAddPlayer}
-            handleGameStart={handleGameStart}
-          ></CreatePlayerArea>
-        </Box>
+        <>
+          <Box>
+            <CreatePlayerArea
+              handleAddPlayer={handleAddPlayer}
+              handleGameStart={handleGameStart}
+            ></CreatePlayerArea>
+          </Box>
+          <Box>
+            <Stack spacing={2}>
+              {playerList.map((player, index) => {
+                return <p key={index}>{player}</p>;
+              })}
+            </Stack>
+          </Box>
+        </>
       )}
-      <Box>
-        <Stack spacing={2}>
-          {playerList.map((player) => {
-            return (
-              <Player
-                name={player.name}
-                score={player.score}
-                key={player.id}
-                myTurn={state.whosTurn === player.id ? true : false}
-              ></Player>
-            );
-          })}
-        </Stack>
-      </Box>
     </>
   );
 }
