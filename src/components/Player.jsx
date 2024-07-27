@@ -6,11 +6,17 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Box from "@mui/material/Box";
 
 export default function Player(props) {
-  const { name, score } = props;
+  const { name, score, myTurn } = props;
+
+  const normaliseScore = (value) => Math.floor(value * 100) / 10000;
+
   return (
     <Box>
-      {name}
-      <LinearProgress variant="determinate" value={score}></LinearProgress>
+      <h3 style={myTurn ? { color: "red" } : { color: "black" }}>{name}</h3>
+      <LinearProgress
+        variant="determinate"
+        value={normaliseScore(score)}
+      ></LinearProgress>
     </Box>
   );
 }

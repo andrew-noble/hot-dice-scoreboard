@@ -9,6 +9,7 @@ export const initialState = {
 export function gameReducer(state, action) {
   switch (action.type) {
     case "INIT-PLAYERS":
+      //this converts a list of player names into list of objects with id, name, score
       return { ...state, players: action.players };
     case "BUILD":
       //player is playing off last pot

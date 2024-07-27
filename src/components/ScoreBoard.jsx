@@ -72,6 +72,7 @@ export default function ScoreBoard() {
                 name={player.name}
                 score={player.score}
                 key={player.id}
+                myTurn={state.whosTurn === player.id ? true : false}
               ></Player>
             );
           })}
