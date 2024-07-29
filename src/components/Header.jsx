@@ -1,9 +1,12 @@
 import React from "react";
+import { Typography } from "@mui/material";
 
 export default function Header() {
   return (
     <header>
-      <h1>Hot Dice Scoreboard</h1>
+      <Typography variant="h1" color="primary" align="center" gutterBottom>
+        🎲🔥 Hot Dice Scoreboard 🔥🎲
+      </Typography>
     </header>
   );
 }

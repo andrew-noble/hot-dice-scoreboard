@@ -6,12 +6,14 @@ export default function BuildDecision(props) {
     <>
       <Button
         variant="contained"
+        disableElevation
         onClick={() => props.doGameLogic({ type: "BUILD" })}
       >
         Build Off Last Player's Score
       </Button>
       <Button
         variant="contained"
+        disableElevation
         onClick={() => props.doGameLogic({ type: "NO-BUILD" })}
       >
         Start Pot Over

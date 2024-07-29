@@ -22,22 +22,24 @@ export default function CreatePlayerArea(props) {
   }
 
   return (
-    <Box>
-      <form onSubmit={handleAddPlayer}>
-        <TextField
-          id="outlined-basic"
-          label="Create Player"
-          variant="outlined"
-          onChange={handleEntry}
-          value={nameEntry}
-        />
-      </form>
-      <Button variant="contained" onClick={handleAddPlayer}>
-        Add
-      </Button>
-      <Button variant="contained" onClick={handleStart}>
-        Start Game
-      </Button>
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box>
+        <form onSubmit={handleAddPlayer} autoComplete="off">
+          <TextField
+            id="outlined-basic"
+            label="Create Player"
+            variant="outlined"
+            onChange={handleEntry}
+            value={nameEntry}
+          />
+        </form>
+        <Button disableElevation variant="contained" onClick={handleAddPlayer}>
+          Add
+        </Button>
+        <Button disableElevation variant="contained" onClick={handleStart}>
+          Start Game
+        </Button>
+      </Box>
+    </ThemeProvider>
   );
 }

@@ -7,9 +7,11 @@ export const initialState = {
 
 //this function constitutes the finite state machine or game logic
 export function gameReducer(state, action) {
-  const curPlayerName = state.players.find(
+  const curPlayer = state.players.find(
     (player) => player.id === state.whosTurn
   );
+  const curPlayerName = curPlayer === undefined ? "none" : curPlayer.name;
+
   switch (action.type) {
     case "INIT-PLAYERS":
       const listOfPlayerDetails = action.playerList.map((name, index) => ({
@@ -20,15 +22,17 @@ export function gameReducer(state, action) {
       return { ...state, players: listOfPlayerDetails };
 
     case "BUILD":
-      console.log(curPlayerName + "Decided to build off the last player's pot");
+      console.log(
+        `${curPlayerName} decided to build off the last player's pot`
+      );
       return { ...state, prompt: "ask-for-roll-input" };
 
     case "NO-BUILD":
-      console.log(curPlayerName + "Decided to start a new pot");
+      console.log(`${curPlayerName} Decided to start a new pot`);
       return { ...state, pot: 0, prompt: "ask-for-roll-input" };
 
     case "ROLL":
-      console.log(curPlayerName + `Rolled ${action.roll}`);
+      console.log(`${curPlayerName} Rolled ${action.roll}`);
       if (action.roll === 0) {
         //player busted, advance turn and reset pot
         return {
@@ -46,7 +50,7 @@ export function gameReducer(state, action) {
       }
 
     case "CASHOUT":
-      console.log(curPlayerName + "Cashed out, next players turn");
+      console.log(`${curPlayerName} Cashed out, next players turn`);
       return {
         ...state,
         players: state.players.map((player) =>
@@ -59,7 +63,7 @@ export function gameReducer(state, action) {
       };
 
     case "CONTINUE":
-      console.log(curPlayerName + "Decided to push their luck");
+      console.log(`${curPlayerName} Decided to push their luck`);
       return { ...state, prompt: "ask-for-roll-input" };
   }
 }

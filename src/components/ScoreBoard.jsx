@@ -41,7 +41,7 @@ export default function ScoreBoard() {
   }
 
   return (
-    <>
+    <Container>
       {isStarted ? (
         <>
           <Box>
@@ -88,6 +88,6 @@ export default function ScoreBoard() {
           </Box>
         </>
       )}
-    </>
+    </Container>
   );
 }

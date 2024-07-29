@@ -18,6 +18,7 @@ export default function RollInput(props) {
     <>
       <form
         onSubmit={() => props.doGameLogic({ type: "ROLL", roll: rollInput })}
+        autoComplete="off"
       >
         <TextField
           id="outlined-basic"
