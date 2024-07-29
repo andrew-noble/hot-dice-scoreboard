@@ -8,12 +8,6 @@ export default function RollInput(props) {
   const [rollInput, setRollInput] = useState("");
   const [error, setError] = useState(false);
 
-  const regex = /^(?:[0-9]|[1-9][0-9]{0,3}|10000)$/; //controls for 0-10000
-
-  function isValid(entry) {
-    return regex.test(entry);
-  }
-
   function handleEntry(event) {
     const input = event.target.value;
 
@@ -22,20 +16,24 @@ export default function RollInput(props) {
     setRollInput(num);
   }
 
+  function isValid(entry) {
+    const regex = /^(?:10000|[0-9]\d{0,3})$/; //controls for 0-10000
+    return regex.test(entry);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    const roll = event.target.value;
 
-    if (!isValid(roll)) {
+    if (!isValid(rollInput)) {
       setError(true);
     } else {
-      props.doGameLogic({ type: "ROLL", roll: roll });
+      props.roll(rollInput);
     }
   }
 
   return (
-    <>
-      <FormControl error={error} onSubmit={handleSubmit} autoComplete="off">
+    <form autoComplete="off" onSubmit={handleSubmit}>
+      <FormControl error={error}>
         <TextField
           id="outlined-basic"
           label="Roll"
@@ -45,11 +43,12 @@ export default function RollInput(props) {
           onChange={handleEntry}
           value={rollInput}
           sx={{ marginTop: 2, marginBottom: 2, display: "block" }}
+          required
         />
       </FormControl>
-      <Button variant="contained" onClick={handleSubmit}>
+      <Button variant="contained" type="submit" onClick={handleSubmit}>
         Submit Roll
       </Button>
-    </>
+    </form>
   );
 }

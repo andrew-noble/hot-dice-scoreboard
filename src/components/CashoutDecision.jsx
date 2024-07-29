@@ -4,18 +4,10 @@ import Button from "@mui/material/Button";
 export default function CashoutDecision(props) {
   return (
     <>
-      <Button
-        variant="contained"
-        disableElevation
-        onClick={() => props.doGameLogic({ type: "CASHOUT" })}
-      >
-        Cash ("Bank") this Pot 🏦
+      <Button variant="contained" disableElevation onClick={props.cashout}>
+        Cashout ("Bank") this Pot 🏦
       </Button>
-      <Button
-        variant="contained"
-        diableElevation
-        onClick={() => props.doGameLogic({ type: "CONTINUE" })}
-      >
+      <Button variant="contained" disableElevation onClick={props.escalate}>
         Push Your Luck 😈
       </Button>
     </>
