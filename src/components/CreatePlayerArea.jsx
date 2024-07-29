@@ -2,44 +2,68 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
+import FormLabel from "@mui/material/FormLabel";
 
 export default function CreatePlayerArea(props) {
-  const [nameEntry, setNameEntry] = useState("");
+  const [playerDetails, setPlayerDetails] = useState({ name: "", color: "" });
 
-  function handleEntry(event) {
-    setNameEntry(event.target.value);
+  const colors = ["red", "green", "blue", "orange", "purple", "pink", "yellow"];
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setPlayerDetails((prevDetails) => {
+      return { ...prevDetails, [name]: value };
+    });
   }
 
   function handleAddPlayer(event) {
     event.preventDefault();
-    props.handleAddPlayer(nameEntry);
-    setNameEntry("");
-  }
-
-  function handleStart(event) {
-    event.preventDefault();
-    props.handleGameStart();
+    props.handleAddPlayer(playerDetails.name);
+    setPlayerDetails({ name: "", color: "" });
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Box>
-        <form onSubmit={handleAddPlayer} autoComplete="off">
+    <Box>
+      <form onSubmit={handleAddPlayer}>
+        <FormControl autoComplete="off">
           <TextField
-            id="outlined-basic"
-            label="Create Player"
+            name="name"
+            value={playerDetails.name}
+            onChange={handleChange}
+            label="Name"
             variant="outlined"
-            onChange={handleEntry}
-            value={nameEntry}
+            sx={{ marginTop: 2, marginBottom: 2, display: "block" }}
           />
-        </form>
-        <Button disableElevation variant="contained" onClick={handleAddPlayer}>
-          Add
-        </Button>
-        <Button disableElevation variant="contained" onClick={handleStart}>
-          Start Game
-        </Button>
-      </Box>
-    </ThemeProvider>
+          <FormLabel>Player Color</FormLabel>
+          <RadioGroup
+            name="color"
+            value={playerDetails.color}
+            onChange={handleChange}
+            row
+          >
+            {colors.map((colorOption, index) => (
+              <FormControlLabel
+                key={index}
+                label={colorOption}
+                value={colorOption}
+                control={<Radio />}
+              ></FormControlLabel>
+            ))}
+          </RadioGroup>
+          <Button
+            disableElevation
+            type="submit"
+            onClick={handleAddPlayer}
+            variant="contained"
+          >
+            Add
+          </Button>
+        </FormControl>
+      </form>
+    </Box>
   );
 }

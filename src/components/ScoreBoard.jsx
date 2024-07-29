@@ -3,6 +3,8 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 import { gameReducer, initialState } from "../gameLogic.js";
 import Player from "./Player.jsx";
@@ -82,12 +84,15 @@ export default function ScoreBoard() {
           <Box>
             <Stack spacing={2}>
               {playerList.map((player, index) => {
-                return <p key={index}>{player}</p>;
+                return <Typography key={index}>{player}</Typography>;
               })}
             </Stack>
           </Box>
         </>
       )}
+      <Button disableElevation variant="contained" onClick={handleGameStart}>
+        Start Game
+      </Button>
     </Container>
   );
 }
