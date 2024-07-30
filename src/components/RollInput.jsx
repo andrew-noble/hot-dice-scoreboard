@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 
-export default function RollInput(props) {
+export default function RollInput({ doGameLogic }) {
   const [rollInput, setRollInput] = useState("");
   const [error, setError] = useState(false);
 
@@ -27,7 +27,7 @@ export default function RollInput(props) {
     if (!isValid(rollInput)) {
       setError(true);
     } else {
-      props.roll(rollInput);
+      doGameLogic.roll(rollInput);
     }
   }
 

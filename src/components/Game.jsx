@@ -10,17 +10,7 @@ export default function Game() {
   //custom hook, returning state and its mutate functions.
   //mutate functions get passed to the components that need them.
   //definitely would be better with redux
-  const {
-    state,
-    start,
-    reset,
-    addPlayer,
-    build,
-    noBuild,
-    roll,
-    cashout,
-    escalate,
-  } = useGameLogic({
+  const { state, doGameLogic } = useGameLogic({
     isStarted: false,
     players: [],
     prompt: "ask-for-roll-input",
@@ -32,33 +22,21 @@ export default function Game() {
     <Container>
       {state.isStarted ? (
         <>
-          <ScoreBoard
-            state={state}
-            reset={reset}
-            build={build}
-            noBuild={noBuild}
-            roll={roll}
-            cashout={cashout}
-            escalate={escalate}
-          ></ScoreBoard>
+          <ScoreBoard state={state} doGameLogic={doGameLogic}></ScoreBoard>
           <ConfirmButton
             //key is necessary here to avoid fuckery with the other SubmitButton
             key="reset"
-            confirmAction={reset}
+            confirmAction={doGameLogic.reset}
             initialText="Reset Game"
             confirmText="Confirm Reset?"
           />
         </>
       ) : (
         <>
-          <InitPlayers
-            state={state}
-            start={start}
-            onAddPlayer={(name, color) => addPlayer(name, color)}
-          ></InitPlayers>
+          <InitPlayers state={state} doGameLogic={doGameLogic}></InitPlayers>
           <ConfirmButton
             key="start"
-            confirmAction={start}
+            confirmAction={doGameLogic.start}
             initialText="Start game"
             confirmText="Confirm start?"
           >

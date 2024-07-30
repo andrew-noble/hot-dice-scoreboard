@@ -9,28 +9,16 @@ import PotCounter from "./PotCounter.jsx";
 import BuildDecision from "./BuildDecision.jsx";
 import CashoutDecision from "./CashoutDecision.jsx";
 
-export default function ScoreBoard({
-  state,
-  build,
-  noBuild,
-  roll,
-  cashout,
-  escalate,
-}) {
+export default function ScoreBoard({ state, doGameLogic }) {
   //this decides which component to show user based on what prompt is active. Just a conditional.
   function promptUser(prompt) {
     switch (prompt) {
       case "ask-build-or-start-fresh":
-        return <BuildDecision build={build} noBuild={noBuild}></BuildDecision>;
+        return <BuildDecision doGameLogic={doGameLogic}></BuildDecision>;
       case "ask-for-roll-input":
-        return <RollInput roll={roll}></RollInput>;
+        return <RollInput doGameLogic={doGameLogic}></RollInput>;
       case "ask-cashout-or-continue":
-        return (
-          <CashoutDecision
-            cashout={cashout}
-            escalate={escalate}
-          ></CashoutDecision>
-        );
+        return <CashoutDecision doGameLogic={doGameLogic}></CashoutDecision>;
     }
   }
 

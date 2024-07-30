@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-export default function CreatePlayerArea({ onAddPlayer, state }) {
+export default function CreatePlayerArea({ state, doGameLogic }) {
   const theme = useTheme();
   const [playerDetailsEntry, setPlayerDetailsEntry] = useState({
     name: "",
@@ -30,7 +30,7 @@ export default function CreatePlayerArea({ onAddPlayer, state }) {
 
   function handleAddPlayer(event) {
     event.preventDefault();
-    onAddPlayer(playerDetailsEntry.name, playerDetailsEntry.color);
+    doGameLogic.addPlayer(playerDetailsEntry.name, playerDetailsEntry.color);
     setPlayerDetailsEntry({ name: "", color: "" });
   }
 

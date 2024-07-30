@@ -5,6 +5,11 @@ import "./main.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+// Global error handling
+window.onerror = (message, source, lineno, colno, error) => {
+  console.error("Global error handler", message, source, lineno, colno, error);
+};
+
 root.render(
   <React.StrictMode>
     <App />

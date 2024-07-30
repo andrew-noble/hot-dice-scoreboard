@@ -91,18 +91,20 @@ export default function useGameLogic(initialState) {
   //the build, noBuild, etc is an easier interface than dispatch's obj arg on the right
   return {
     state: state,
-    start: () => dispatch({ type: "START" }),
-    reset: () => dispatch({ type: "RESET" }),
-    addPlayer: (player, color) =>
-      dispatch({
-        type: "ADD-PLAYER",
-        newPlayerName: player,
-        newPlayerColor: color,
-      }),
-    build: () => dispatch({ type: "BUILD" }),
-    noBuild: () => dispatch({ type: "NO-BUILD" }),
-    roll: (roll) => dispatch({ type: "ROLL", roll: roll }),
-    cashout: () => dispatch({ type: "CASHOUT" }),
-    escalate: () => dispatch({ type: "ESCALATE" }),
+    doGameLogic: {
+      build: () => dispatch({ type: "BUILD" }),
+      noBuild: () => dispatch({ type: "NO-BUILD" }),
+      roll: (roll) => dispatch({ type: "ROLL", roll: roll }),
+      cashout: () => dispatch({ type: "CASHOUT" }),
+      escalate: () => dispatch({ type: "ESCALATE" }),
+      start: () => dispatch({ type: "START" }),
+      reset: () => dispatch({ type: "RESET" }),
+      addPlayer: (player, color) =>
+        dispatch({
+          type: "ADD-PLAYER",
+          newPlayerName: player,
+          newPlayerColor: color,
+        }),
+    },
   };
 }
