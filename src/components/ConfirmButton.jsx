@@ -11,7 +11,7 @@ export default function ConfirmButton(props) {
       {!confirm ? (
         <Button
           disableElevation
-          variant="contained"
+          variant="outlined"
           color="primary"
           onClick={() => setConfirm(true)}
         >

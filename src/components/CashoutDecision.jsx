@@ -4,7 +4,7 @@ import { ButtonGroup } from "@mui/material";
 
 export default function CashoutDecision({ doGameLogic }) {
   return (
-    <ButtonGroup variant="outlined" orientation="vertical">
+    <ButtonGroup variant="outlined" orientation="vertical" color="secondary">
       <Button disableElevation onClick={doGameLogic.cashout}>
         Cashout ("Bank") this Pot 🏦
       </Button>
