@@ -4,7 +4,7 @@ import { ButtonGroup } from "@mui/material";
 
 export default function BuildDecision(props) {
   return (
-    <ButtonGroup variant="contained">
+    <ButtonGroup variant="outlined" orientation="vertical">
       <Button disableElevation onClick={props.build}>
         Build Off Last Player's Score
       </Button>

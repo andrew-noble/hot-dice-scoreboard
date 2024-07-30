@@ -3,14 +3,12 @@ import Game from "./Game.jsx";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { deepOrange, orange } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
-    primary: blue,
-    background: {
-      default: "#fefefe",
-    },
+    primary: deepOrange,
+    secondary: orange,
   },
   components: {
     MuiButton: {

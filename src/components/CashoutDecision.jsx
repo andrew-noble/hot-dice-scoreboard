@@ -4,7 +4,7 @@ import { ButtonGroup } from "@mui/material";
 
 export default function CashoutDecision(props) {
   return (
-    <ButtonGroup variant="contained">
+    <ButtonGroup variant="outlined" orientation="vertical">
       <Button disableElevation onClick={props.cashout}>
         Cashout ("Bank") this Pot 🏦
       </Button>

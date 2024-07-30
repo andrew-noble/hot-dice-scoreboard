@@ -12,7 +12,7 @@ export default function ConfirmButton(props) {
         <Button
           disableElevation
           variant="contained"
-          color="secondary"
+          color="primary"
           onClick={() => setConfirm(true)}
         >
           {initialText}
