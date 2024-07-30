@@ -2,14 +2,22 @@ import React, { useReducer } from "react";
 
 //This is the overall game logic aka finite state machine aka decision tree
 const gameReducer = (state, action) => {
-  const curPlayerName = state.isStarted
-    ? state.players[state.whosTurn].name
-    : "none";
+  const curPlayerName = () => state.players[state.whosTurn].name;
 
   switch (action.type) {
     case "START":
       console.log("Game started!");
       return { ...state, isStarted: true };
+
+    case "RESET":
+      console.log("Game reset");
+      return {
+        isStarted: false,
+        players: [],
+        prompt: "ask-for-roll-input",
+        whosTurn: 0,
+        pot: 0,
+      };
 
     case "ADD-PLAYER":
       console.log(`New player: ${action.newPlayerName}`);
@@ -84,6 +92,7 @@ export default function useGameLogic(initialState) {
   return {
     state: state,
     start: () => dispatch({ type: "START" }),
+    reset: () => dispatch({ type: "RESET" }),
     addPlayer: (player, color) =>
       dispatch({
         type: "ADD-PLAYER",
