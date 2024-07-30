@@ -45,10 +45,10 @@ export default function RollInput(props) {
           sx={{ marginTop: 2, marginBottom: 2, display: "block" }}
           required
         />
+        <Button variant="contained" type="submit" onClick={handleSubmit}>
+          Submit Roll
+        </Button>
       </FormControl>
-      <Button variant="contained" type="submit" onClick={handleSubmit}>
-        Submit Roll
-      </Button>
     </form>
   );
 }

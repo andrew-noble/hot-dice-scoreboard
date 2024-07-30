@@ -43,7 +43,6 @@ export default function Game() {
           ></ScoreBoard>
           <ConfirmButton
             //key is necessary here to avoid fuckery with the other SubmitButton
-
             key="reset"
             confirmAction={reset}
             initialText="Reset Game"

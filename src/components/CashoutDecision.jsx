@@ -1,15 +1,16 @@
 import React from "react";
 import Button from "@mui/material/Button";
+import { ButtonGroup } from "@mui/material";
 
 export default function CashoutDecision(props) {
   return (
-    <>
-      <Button variant="contained" disableElevation onClick={props.cashout}>
+    <ButtonGroup variant="contained">
+      <Button disableElevation onClick={props.cashout}>
         Cashout ("Bank") this Pot 🏦
       </Button>
-      <Button variant="contained" disableElevation onClick={props.escalate}>
+      <Button disableElevation onClick={props.escalate}>
         Push Your Luck 😈
       </Button>
-    </>
+    </ButtonGroup>
   );
 }

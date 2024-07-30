@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
+import { ButtonGroup } from "@mui/material";
 
 export default function ConfirmButton(props) {
   const [confirm, setConfirm] = useState(false);
@@ -17,10 +18,9 @@ export default function ConfirmButton(props) {
           {initialText}
         </Button>
       ) : (
-        <>
+        <ButtonGroup variant="outlined">
           <Button
             disableElevation
-            variant="contained"
             color="primary"
             // After confirming, I wan't to send action AND reset the button to unconfirmed
             onClick={confirmAction}
@@ -29,13 +29,12 @@ export default function ConfirmButton(props) {
           </Button>
           <Button
             disableElevation
-            variant="contained"
             color="primary"
             onClick={() => setConfirm(false)}
           >
             Cancel
           </Button>
-        </>
+        </ButtonGroup>
       )}
     </>
   );

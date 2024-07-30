@@ -8,12 +8,23 @@ import { blue } from "@mui/material/colors";
 const theme = createTheme({
   palette: {
     primary: blue,
+    background: {
+      default: "#fefefe",
+    },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          margin: "10px", // Or use theme.spacing(1) for consistency
+          marginTop: "10px", // Or use theme.spacing(1) for consistency
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          marginTop: "10px",
+          marginBottom: "10px",
         },
       },
     },

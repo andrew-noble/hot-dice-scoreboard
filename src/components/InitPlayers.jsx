@@ -9,8 +9,11 @@ import FormLabel from "@mui/material/FormLabel";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { Box } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 export default function CreatePlayerArea({ onAddPlayer, state }) {
+  const theme = useTheme();
   const [playerDetailsEntry, setPlayerDetailsEntry] = useState({
     name: "",
     color: "",
@@ -32,19 +35,18 @@ export default function CreatePlayerArea({ onAddPlayer, state }) {
   }
 
   return (
-    <Grid container>
+    <Grid container spacing={2}>
       <Grid item xs={6}>
         <form onSubmit={handleAddPlayer} autoComplete="off">
           <FormControl>
-            <FormLabel>Player Name</FormLabel>
+            <FormLabel>Player Color</FormLabel>
             <TextField
               name="name"
               value={playerDetailsEntry.name}
               onChange={handleChange}
-              label="Name"
+              label="Player Name"
               variant="outlined"
               required
-              sx={{ marginTop: 2, marginBottom: 2, display: "block" }}
             />
             <FormLabel>Player Color</FormLabel>
             <RadioGroup
@@ -52,13 +54,15 @@ export default function CreatePlayerArea({ onAddPlayer, state }) {
               value={playerDetailsEntry.color}
               onChange={handleChange}
               row
+              required
             >
               {colorOptions.map((colorOption, index) => (
                 <FormControlLabel
                   key={index}
                   label={colorOption}
                   value={colorOption}
-                  control={<Radio />}
+                  sx={{ color: colorOption }}
+                  control={<Radio sx={{ color: colorOption }} />}
                 ></FormControlLabel>
               ))}
             </RadioGroup>
