@@ -4,13 +4,12 @@ import InitPlayers from "./InitPlayers.jsx";
 import useGameLogic from "../useGameLogic.js";
 import ConfirmButton from "./ConfirmButton.jsx";
 
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 export default function Game() {
-  //custom hook, returning state and its mutate functions. Kinda fugly
+  //custom hook, returning state and its mutate functions.
+  //mutate functions get passed to the components that need them.
+  //definitely would be better with redux
   const {
     state,
     start,
@@ -30,11 +29,12 @@ export default function Game() {
   });
 
   return (
-    <Container align="center">
+    <Container>
       {state.isStarted ? (
         <>
           <ScoreBoard
             state={state}
+            reset={reset}
             build={build}
             noBuild={noBuild}
             roll={roll}
@@ -42,31 +42,29 @@ export default function Game() {
             escalate={escalate}
           ></ScoreBoard>
           <ConfirmButton
+            //key is necessary here to avoid fuckery with the other SubmitButton
+
+            key="reset"
             confirmAction={reset}
-            confirmText="Confirm Reset?"
             initialText="Reset Game"
+            confirmText="Confirm Reset?"
           />
         </>
       ) : (
         <>
           <InitPlayers
+            state={state}
+            start={start}
             onAddPlayer={(name, color) => addPlayer(name, color)}
           ></InitPlayers>
-          <Stack spacing={2}>
-            {state.players.map((player, index) => {
-              return (
-                <Typography
-                  key={index}
-                  sx={{ color: player.color, fontSize: "large" }}
-                >
-                  {player.name}
-                </Typography>
-              );
-            })}
-          </Stack>
-          <Button disableElevation variant="contained" onClick={start}>
+          <ConfirmButton
+            key="start"
+            confirmAction={start}
+            initialText="Start game"
+            confirmText="Confirm start?"
+          >
             Start Game
-          </Button>
+          </ConfirmButton>
         </>
       )}
     </Container>

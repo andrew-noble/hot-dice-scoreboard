@@ -7,12 +7,22 @@ export default function ConfirmButton(props) {
 
   return (
     <>
-      {confirm ? (
+      {!confirm ? (
+        <Button
+          disableElevation
+          variant="contained"
+          color="secondary"
+          onClick={() => setConfirm(true)}
+        >
+          {initialText}
+        </Button>
+      ) : (
         <>
           <Button
             disableElevation
             variant="contained"
             color="primary"
+            // After confirming, I wan't to send action AND reset the button to unconfirmed
             onClick={confirmAction}
           >
             {confirmText}
@@ -26,15 +36,6 @@ export default function ConfirmButton(props) {
             Cancel
           </Button>
         </>
-      ) : (
-        <Button
-          disableElevation
-          variant="contained"
-          color="secondary"
-          onClick={() => setConfirm(true)}
-        >
-          {initialText}
-        </Button>
       )}
     </>
   );
