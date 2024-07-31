@@ -25,10 +25,10 @@ export default function ScoreBoard({ state, doGameLogic }) {
   return (
     <Box>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={8} md={6}>
           {promptUser(state.prompt)}
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={4} md={6}>
           <PotCounter pot={state.pot}></PotCounter>
         </Grid>
       </Grid>

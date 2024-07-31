@@ -39,7 +39,7 @@ export default function CreatePlayerArea({ state, doGameLogic }) {
       <Grid item xs={6}>
         <form onSubmit={handleAddPlayer} autoComplete="off">
           <FormControl>
-            <FormLabel>Player Name</FormLabel>
+            <FormLabel>Add Players</FormLabel>
             <TextField
               name="name"
               value={playerDetailsEntry.name}
