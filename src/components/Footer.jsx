@@ -9,9 +9,7 @@ export default function Footer() {
         align="center"
         color="primary"
         sx={{
-          position: "absolute",
           width: "100%",
-          height: "2.5rem",
         }}
       >
         Andrew Noble | Copyright ⓒ {year}
