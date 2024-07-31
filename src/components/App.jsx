@@ -2,6 +2,8 @@ import React from "react";
 import Game from "./Game.jsx";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
+import Explanation from "./Explanation.jsx";
+
 import {
   Container,
   createTheme,
@@ -40,9 +42,10 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Container sx={{ padding: "30px" }}>
         <CssBaseline />
-        <Header></Header>
-        <Game></Game>
-        <Footer></Footer>
+        <Header />
+        <Game />
+        <Explanation />
+        <Footer />
       </Container>
     </ThemeProvider>
   );
