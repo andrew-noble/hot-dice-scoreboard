@@ -2,7 +2,9 @@ import React, { useReducer } from "react";
 
 //This is the overall game logic aka finite state machine aka decision tree
 const gameReducer = (state, action) => {
-  const curPlayerName = () => state.players[state.whosTurn].name;
+  function getName() {
+    return state.players[state.whosTurn].name;
+  }
 
   switch (action.type) {
     case "START":
@@ -36,17 +38,15 @@ const gameReducer = (state, action) => {
     //--below is the "core game logic", what actually happens once the game starts
 
     case "BUILD":
-      console.log(
-        `${curPlayerName} decided to build off the last player's pot`
-      );
+      console.log(`${getName()} decided to build off the last player's pot`);
       return { ...state, prompt: "ask-for-roll-input" };
 
     case "NO-BUILD":
-      console.log(`${curPlayerName} decided to start a new pot`);
+      console.log(`${getName()} decided to start a new pot`);
       return { ...state, pot: 0, prompt: "ask-for-roll-input" };
 
     case "ROLL":
-      console.log(`${curPlayerName} rolled ${action.roll}`);
+      console.log(`${getName()} rolled ${action.roll}`);
       if (action.roll === 0) {
         //player busted, advance turn and reset pot
         return {
@@ -64,7 +64,7 @@ const gameReducer = (state, action) => {
       }
 
     case "CASHOUT":
-      console.log(`${curPlayerName} cashed out, next players turn`);
+      console.log(`${getName()} cashed out, next players turn`);
       return {
         ...state,
         players: state.players.map((player, playerIndex) =>
@@ -77,7 +77,7 @@ const gameReducer = (state, action) => {
       };
 
     case "ESCALATE":
-      console.log(`${curPlayerName} decided to push their luck`);
+      console.log(`${getName()} decided to push their luck`);
       return { ...state, prompt: "ask-for-roll-input" };
   }
 };
