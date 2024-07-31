@@ -33,11 +33,12 @@ export default function ScoreBoard({ state, doGameLogic }) {
         </Grid>
       </Grid>
 
-      <Stack spacing={2}>
+      <Stack spacing={2} sx={{ marginTop: "50px" }}>
         {state.players.map((player, playerIndex) => {
           return (
             <Player
               name={player.name}
+              playerColor={player.color}
               score={player.score}
               key={playerIndex}
               myTurn={state.whosTurn === playerIndex ? true : false}

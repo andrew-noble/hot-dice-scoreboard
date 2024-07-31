@@ -69,7 +69,7 @@ const gameReducer = (state, action) => {
         ...state,
         players: state.players.map((player, playerIndex) =>
           playerIndex === state.whosTurn
-            ? { ...player, score: (player.score += state.pot) }
+            ? { ...player, score: player.score + state.pot }
             : player
         ),
         whosTurn: (state.whosTurn + 1) % state.players.length,

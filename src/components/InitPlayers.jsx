@@ -19,7 +19,7 @@ export default function CreatePlayerArea({ state, doGameLogic }) {
     color: "",
   });
 
-  const colorOptions = ["red", "green", "blue", "orange", "purple"];
+  const colorOptions = ["red", "lime", "fuchsia", "orange", "aqua"];
 
   function handleChange(event) {
     const { name, value } = event.target;
