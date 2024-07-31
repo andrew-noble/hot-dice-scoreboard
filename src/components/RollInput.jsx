@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
+import ButtonGroup from "@mui/material/ButtonGroup";
 
 export default function RollInput({ doGameLogic }) {
   const [rollInput, setRollInput] = useState("");
@@ -45,9 +46,12 @@ export default function RollInput({ doGameLogic }) {
           sx={{ marginTop: 2, marginBottom: 2, display: "block" }}
           required
         />
-        <Button variant="contained" type="submit" onClick={handleSubmit}>
-          Submit Roll
-        </Button>
+        <ButtonGroup variant="contained">
+          <Button type="submit" onClick={handleSubmit}>
+            Submit Roll
+          </Button>
+          <Button onClick={() => doGameLogic.roll(0)}>Bust!</Button>
+        </ButtonGroup>
       </FormControl>
     </form>
   );
