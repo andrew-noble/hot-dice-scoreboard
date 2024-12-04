@@ -17,16 +17,16 @@ export default function Explanation(props) {
             Hot dice aka "around the corner" aka "farkle" is a dice game where
             players take turns building a pot of points via dice rolls. Each
             turn starts with 6 dice with which the player needs to roll a 1
-            (worth 100 pts), 5 (worth 50pts), or another
+            (worth 100 pts), 5 (worth 50pts), or another&nbsp;
             <Link href="https://www.thedarkimp.com/wp-content/uploads/2022/01/farkle-scoresheet.png">
               valid combination
             </Link>
-            to survive. Upon scoring, one or more scoring die (1 or 5 or combo)
-            is removed and put into the pot of points, and the player may choose
-            to "push their luck" by rolling again with the remaining dice. This
-            continues until the player (1) "busts", (2) cashes out, or goes
-            "around the corner" by scoring with every die remaining in any
-            particular roll, whereupon they retain their pot and get a fresh
+            &nbsp;to survive. Upon scoring, one or more scoring die (1 or 5 or
+            combo) is removed and put into the pot of points, and the player may
+            choose to "push their luck" by rolling again with the remaining
+            dice. This continues until the player (1) "busts", (2) cashes out,
+            or goes "around the corner" by scoring with every die remaining in
+            any particular roll, whereupon they retain their pot and get a fresh
             batch of 6 die to continue building their pot with.
           </Typography>
           <br />
