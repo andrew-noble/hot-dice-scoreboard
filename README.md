@@ -7,9 +7,10 @@ make this scoreboard app to help keep track of score and make it easier for evey
 It shows each player's score, and conducts the game logic by accepting roll entries and
 prompting the user to make decisions. I made this as an exercise to practice react.
 
-Check out the app, its hosted here app is hosted here: [https://andrew-noble.github.io/hot-dice-scoreboard/](https://andrew-noble.github.io/hot-dice-scoreboard/)
+Check out the app, its hosted here: [https://andrew-noble.github.io/hot-dice-scoreboard/](https://andrew-noble.github.io/hot-dice-scoreboard/)
 
-## Features
+## Skills Demonstrated:
 
 - React
 - Material UI for a component library
+- Complex Game State Management without a library
