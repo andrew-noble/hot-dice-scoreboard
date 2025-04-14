@@ -1,8 +1,8 @@
 import React from "react";
-import Game from "./Game.jsx";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
-import Explanation from "./Explanation.jsx";
+import Game from "./components/Game.jsx";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import Explanation from "./components/Explanation.jsx";
 
 import {
   Container,
