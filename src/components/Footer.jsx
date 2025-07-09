@@ -9,8 +9,8 @@ export default function Footer() {
       <Typography align="center" color="primary" variant="body2" gutterBottom>
         This is a project I made to practice react. Check out the code
         here:&nbsp;
-        <Link href="https://github.com/andrewrn0">
-          https://github.com/andrewrn0
+        <Link href="https://github.com/andrew-noble/">
+          https://github.com/andrew-noble
         </Link>
       </Typography>
       <Typography
