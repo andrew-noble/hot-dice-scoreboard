@@ -62,7 +62,7 @@ export default function CreatePlayerArea({ state, doGameLogic }) {
                   label={colorOption}
                   value={colorOption}
                   sx={{ color: colorOption }}
-                  control={<Radio sx={{ color: colorOption }} />}
+                  control={<Radio sx={{ color: colorOption,  '&.Mui-checked': { color: colorOption } }} />}
                 ></FormControlLabel>
               ))}
             </RadioGroup>
